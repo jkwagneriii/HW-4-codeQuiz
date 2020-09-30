@@ -1,5 +1,12 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 body {
     background-color: rgb(219, 157, 231);
+    padding: 0;
+    margin: 0;
 }
 
 a {
@@ -10,22 +17,45 @@ a {
     text-align: right;
 }
 
+.container {
+  background-color: rgb(211, 121, 230);
+  width: 600px;
+  height: 200px;
+  border: 15px solid rgb(244, 247, 100);
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    border: 1px solid black;
+    background-color: rgb(224, 186, 231);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.btn:hover {
+    border: 1px solid rgb(197, 22, 228);
+    background-color: rgb(241, 245, 41);
+    box-shadow: 0 0 10px 2px;
+}
+
+
 /* .maingrid {
     margin-left: auto;
     margin-right: auto;
 } */
 
-#quiz {
-  background-color: rgb(211, 121, 230);
-  width: 600px;
-  height: 200px;
-  border: 15px solid rgb(244, 247, 100);
-  padding: 50px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.btnstyle {
+/* .btnstyle {
     width: 140px;
     height: 30px;
-}
+} */

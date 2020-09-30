@@ -1,14 +1,17 @@
+//WORK ON COMMENTS FOR SILLY TA
 var userScore = 0;
 var quizContainer = document.querySelector("#quizContainer");
-var highScore = 
+var highScore;
 var questionText = document.querySelector("#question");
 
 
+//WORK ON COMMENTS FOR PAUL OKAY PAUL NEEEEEDS IT
 
 quizContainer.addEventListener("click", function(event) {
     var element = event.target;
 })
 
+//WORK ON COMMENTS
 var questions = [
     {
         question: "Here is a question",
@@ -32,6 +35,7 @@ var questions = [
     }
 ]
 
+//COMMENTS NEEDED COMMUNICASH
 for (let index = 0; index < questions.length; index++) {
     var questionText =  questions[index].question;
     var choicesText = questions[index].choices;
@@ -42,8 +46,6 @@ for (let index = 0; index < questions.length; index++) {
 
 //This function should display the QUESTION as an h1 and display each CHOICE inside a button.
 
-
-
 function drawQuestionText (question, choices, correct) {
     console.log(question);
     console.log(choices);
@@ -53,6 +55,35 @@ function drawQuestionText (question, choices, correct) {
 
     // questionText.textContent = questions
 }
+
+
+
+
+
+// Countdown Timer WORKS!!! Still need to figure out how to link this and getting an answer wrong
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+// This is supposed to be the function that makes the timer start once I click the Start Game button
+window.body.startbutton.onclick = function () {
+    var oneMinute = 60 * 1,
+        display = document.querySelector('#time');
+    startTimer(oneMinute, display);
+};
+
 
 
 
@@ -87,30 +118,3 @@ function drawQuestionText (question, choices, correct) {
 
 // p.appendChild(questionEl);
 
-
-
-
-
-// Countdown Timer WORKS!!! Still need to figure out how to link this and getting an answer wrong
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
-
-window.onload = function () {
-    var oneMinute = 60 * 1,
-        display = document.querySelector('#time');
-    startTimer(oneMinute, display);
-};
