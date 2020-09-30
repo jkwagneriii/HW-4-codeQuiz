@@ -1,3 +1,31 @@
+body {
+    background-color: rgb(219, 157, 231);
+}
+
+a {
+    color: black;
+}
+
 #timer {
     text-align: right;
+}
+
+/* .maingrid {
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+#quiz {
+  background-color: rgb(211, 121, 230);
+  width: 600px;
+  height: 200px;
+  border: 15px solid rgb(244, 247, 100);
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btnstyle {
+    width: 140px;
+    height: 30px;
 }

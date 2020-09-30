@@ -27,3 +27,4 @@ window.onload = function () {
     <div>Registration closes in <span id="time">05:00</span> minutes!</div>
 </body>
 
+
