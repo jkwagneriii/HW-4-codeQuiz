@@ -128,3 +128,49 @@ $(document).on('click', '.start-btn', () => {
 
 // p.appendChild(questionEl);
 
+
+var deadline = new Time("00:00:00").getTime();
+
+
+
+
+// click event listener on start button
+startBtn.addEventListener("click", startQuiz);
+
+function startQuiz() {
+    // toggle classList.add/remove("hide")
+    intro.classList.add("hide");
+    quiz.classList.remove("hide");
+
+    // Timer starts
+    timeEl = setInterval(quizTime, 1000)
+}
+
+function quizTime() {
+    var timeElapsed = parseInt(time.textContent);
+    timeElapsed--
+    // Changed timeElapsed number is added to the span #time
+    time.textContent = timeElapsed;
+    // If/else conditional to indicate when to stop quiz --> use clearInterval();
+    if (timeElapsed === 0) {
+        clearInterval(timeEl);
+    }
+}
+
+
+
+
+function begin(){
+    // console.log("it works") 
+    buttonContainer.setAttribute("class", "hide")
+    var timerLogic = 60;
+    var timerInterval = setInterval(function(){
+        timerLogic--
+        timer.textContent = timerLogic
+        //if the timer reaches 0 alert pops up that time is up
+        if(timerLogic <=0){
+            clearInterval(timerInterval)
+            alert("Time's Up!")
+        }
+    },1000)
+  }

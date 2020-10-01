@@ -1,11 +1,24 @@
-// This is a practice page
-const startButton = document.getElementById('start-btn');
-const questionContainerEl = document.getElementById('question-container')
+// GLOBAL SCOPE VARIABLES
+let startButton = document.getElementById('start-btn');
+let questionContainerEl = document.getElementById('question-container')
 let shuffledQuestions, currentQuestionIndex
-const questionEl = document.getElementById('question')
-const answerBtnEl = document.getElementById('answer-buttons')
+let questionEl = document.getElementById('question')
+let answerBtnEl = document.getElementById('answer-buttons')
+let timeEl;
 
 startButton.addEventListener('click', startGame)
+
+function quizTime() {
+    var timeElapsed = parseInt(time.textContent);
+    timeElapsed--
+    // Changed timeElapsed number is added to the span #time
+    time.textContent = timeElapsed;
+    // If/else conditional to indicate when to stop quiz --> use clearInterval();
+    if (timeElapsed === 0) {
+        clearInterval(timeEl);
+    }
+}
+
 
 function startGame() {
     console.log('Started');
@@ -13,6 +26,7 @@ function startGame() {
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0
     questionContainerEl.classList.remove('hide');
+    timeEl = setInterval(quizTime, 1000)
     setNextQuestion()
 }
 
