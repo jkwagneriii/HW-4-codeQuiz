@@ -5,6 +5,9 @@ let answerBtnEl = document.getElementById('answer-buttons')
 let questionContainerEl = document.getElementById('question-container')
 let shuffledQuestions, currentQuestionIndex
 let timeEl;
+// let correctAnswers = 0
+// let wrongAnswers = 0
+// let finalScore = 0
 
 //Here we have our constant array of questions, which contains objects with key value pairs. There will be a for loop that will cycle through the array of objects and plugs the text content into buttons using jQuery. 
 const questions = [
@@ -117,3 +120,6 @@ function selectAnswer() {
 }
 
 
+function goToHighscore() {
+
+}
