@@ -1,30 +1,105 @@
-// This page is to help supplement my psuedo code page by adding possible reference code to use once I actually start putting it all together.
+// This is a practice page
+const startButton = document.getElementById('start-btn');
+const questionContainerEl = document.getElementById('question-container')
+let shuffledQuestions, currentQuestionIndex
+const questionEl = document.getElementById('question')
+const answerBtnEl = document.getElementById('answer-buttons')
 
-// Possible countdown timer reference code!
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+startButton.addEventListener('click', startGame)
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
+function startGame() {
+    console.log('Started');
+    startButton.classList.add('hide');
+    shuffledQuestions = questions.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0
+    questionContainerEl.classList.remove('hide');
+    setNextQuestion()
 }
 
-window.onload = function () {
-    var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-};
-<body>
-    <div>Registration closes in <span id="time">05:00</span> minutes!</div>
-</body>
+function setNextQuestion() {
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+}
 
+function showQuestion(currentQuestion) {
+    $('#answer-buttons').empty()
+    $('#question').empty()
+    questionEl.innerText = currentQuestion.question
+
+    //console.log('question choices ??', currentQuestion)
+
+    for (let i = 0; i < currentQuestion.choices.length; i++) {
+        //console.log('i??', i );
+        
+        //console.log('singldue due ???????',  currentQuestion.choices[i].text)
+        // 1 2 3 punch to put on page!!
+
+        //1 make a piece of html with jquery
+        var button = $('<button>')
+
+        //2 dress it up as u want it , class names text, id's, ect
+        button.text(currentQuestion.choices[i].text)
+        button.addClass('btn')    
+        button.addClass('choice-btn')     
+
+        //3 .append to page!! aka stick the button u just made on the page!
+        $('#answer-buttons').append(button)
+    }   
+}
+
+
+$(document).on('click', '.choice-btn', () => {
+    console.log('current qesiotn index!!!', currentQuestionIndex)
+    currentQuestionIndex++
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+})
+
+
+
+function selectAnswer() {
+
+}
+
+const questions = [
+    {
+        question: "How many friends do I have",
+        choices: [
+            { text: 'so many', correct: true },
+            { text: 'too many', correct: false},
+            { text: '11', correct: false },
+            { text: 'only some', correct: false},
+        ],
+        answer: 0
+    },
+    {
+        question: "What does my hair look like?",
+        choices: [
+            { text: 'old', correct: false },
+            { text: 'french', correct: false},
+            { text: '11', correct: true },
+            { text: 'octupus', correct: false},
+        ],
+        answer: 2
+    },
+    {
+        question: "Where are my keys?",
+        choices: [
+            { text: '11', correct: false },
+            { text: 'the alley', correct: true},
+            { text: 'with allie', correct: false },
+            { text: 'squid', correct: false},
+        ],
+        answer: 1
+    },
+    {
+        question: "How many questions are there?",
+        choices: [
+            { text: '5', correct: false },
+            { text: '4', correct: true },
+            { text: '11', correct: false },
+            { text: 'eight', correct: false},
+        ],
+        answer: 1
+    },
+ 
+]
 

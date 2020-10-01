@@ -48,6 +48,22 @@ a {
     box-shadow: 0 0 10px 2px;
 }
 
+.start-btn {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
 
 /* .maingrid {
     margin-left: auto;

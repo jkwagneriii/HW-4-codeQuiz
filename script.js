@@ -57,6 +57,13 @@ function drawQuestionText (question, choices, correct) {
 }
 
 
+$(document).on('click', '.choice-btn', () => {
+    console.log('current qesiotn index!!!', currentQuestionIndex)
+    currentQuestionIndex++
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+})
+
+$(document).on('click', '.start-btn', () =>)
 
 
 
@@ -86,6 +93,9 @@ window.body.startbutton.onclick = function () {
 
 
 
+$(document).on('click', '.start-btn', () => {
+    startTimer();
+})
 
 
 
