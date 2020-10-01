@@ -5,6 +5,7 @@ let answerBtnEl = document.getElementById('answer-buttons')
 let questionContainerEl = document.getElementById('question-container')
 let shuffledQuestions, currentQuestionIndex
 let timeEl;
+
 // let correctAnswers = 0
 // let wrongAnswers = 0
 // let finalScore = 0
@@ -12,42 +13,42 @@ let timeEl;
 //Here we have our constant array of questions, which contains objects with key value pairs. There will be a for loop that will cycle through the array of objects and plugs the text content into buttons using jQuery. 
 const questions = [
     {
-        question: "How many friends do I have",
+        question: "Where do domestic carrots originate from?",
         choices: [
-            { text: 'so many', correct: true },
-            { text: 'too many', correct: false},
-            { text: '11', correct: false },
-            { text: 'only some', correct: false},
+            { text: 'central asia', correct: true },
+            { text: 'australia', correct: false},
+            { text: 'canada', correct: false },
+            { text: 'the midwest', correct: false},
         ],
         answer: 0
     },
     {
-        question: "What does my hair look like?",
+        question: "What is kombucha?",
         choices: [
-            { text: 'old', correct: false },
-            { text: 'french', correct: false},
-            { text: '11', correct: true },
-            { text: 'octupus', correct: false},
+            { text: 'sparkling vineager', correct: false },
+            { text: 'old soda', correct: false},
+            { text: 'fermented tea', correct: true },
+            { text: 'fermented juice', correct: false},
         ],
         answer: 2
     },
     {
-        question: "Where are my keys?",
+        question: "What is the main ingredient in tequila?",
         choices: [
-            { text: '11', correct: false },
-            { text: 'the alley', correct: true},
-            { text: 'with allie', correct: false },
-            { text: 'squid', correct: false},
+            { text: 'corn', correct: false },
+            { text: 'agave', correct: true},
+            { text: 'lime peel', correct: false },
+            { text: 'wheat', correct: false},
         ],
         answer: 1
     },
     {
-        question: "How many questions are there?",
+        question: "What year was The Wedding Singer made?",
         choices: [
-            { text: '5', correct: false },
-            { text: '4', correct: true },
-            { text: '11', correct: false },
-            { text: 'eight', correct: false},
+            { text: '1985', correct: false },
+            { text: '1998', correct: true },
+            { text: '2001', correct: false },
+            { text: '1980', correct: false},
         ],
         answer: 1
     },
@@ -68,14 +69,28 @@ function quizTime() {
     }
 }
 
+
+let correctCount = document.querySelector('#counter-correct');
+let incorrectCount = document.querySelector('#counter-incorrect');
+
+
+function changePoints() {
+    if (questions.choices.correct === true){
+        correctCount++;
+    }
+    else {
+        incorrectCount++;
+    }
+}
+
 //This function is the main launching point for the game. The .hide class coming from CSS  will display block the start button and simutaneously remove the display block from the question container. Additionally, the setInterval function will begin decrementing the timeEl by 1 second. 
 function startGame() {
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() - .5);
-    currentQuestionIndex = 0
+    currentQuestionIndex = 0;
     questionContainerEl.classList.remove('hide');
-    timeEl = setInterval(quizTime, 1000)
-    setNextQuestion()
+    timeEl = setInterval(quizTime, 1000);
+    setNextQuestion();
 }
 
 //setNextQuestion is taking the values gathered from showQuestion and running through the empty values in a random order each time. This is because we created the variable shuffledQuestions in the main start function which uses Math.random to shuffle through the questions differently each time you take the quiz.

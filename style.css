@@ -28,6 +28,19 @@ a {
   box-shadow: 0 0 10px 2px;
 }
 
+.store-score {
+background-color: rgb(211, 121, 230);
+  width: 190px;
+  padding: 5px;
+  height: auto;
+  border: 15px solid rgb(244, 247, 100);
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px 2px;
+}
+
 .score-container {
     background-color: rgb(211, 121, 230);
     width: 600px;
