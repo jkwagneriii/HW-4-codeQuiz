@@ -1,12 +1,150 @@
-// GLOBAL SCOPE VARIABLES
-let startButton = document.getElementById('start-btn');
-let questionContainerEl = document.getElementById('question-container')
-let shuffledQuestions, currentQuestionIndex
-let questionEl = document.getElementById('question')
-let answerBtnEl = document.getElementById('answer-buttons')
-let timeEl;
+//WORK ON COMMENTS FOR SILLY TA
+var userScore = 0;
+var quizContainer = document.querySelector("#quizContainer");
+var highScore;
+var questionText = document.querySelector("#question");
 
-startButton.addEventListener('click', startGame)
+
+//WORK ON COMMENTS FOR PAUL OKAY PAUL NEEEEEDS IT
+
+quizContainer.addEventListener("click", function(event) {
+    var element = event.target;
+})
+
+//WORK ON COMMENTS
+var questions = [
+    {
+        question: "Here is a question",
+        choices: ["x", "y", "z", "f"],
+        answer: 2
+    },
+    {
+        question: "Here is a question1",
+        choices: ["x", "y", "z", "f"],
+        answer: 2
+    },
+    {
+        question: "Here is a question2",
+        choices: ["x", "y", "z", "f"],
+        answer: 2
+    },
+    {
+        question: "Here is a question3",
+        choices: ["x", "y", "z", "f"],
+        answer: 2
+    }
+]
+
+//COMMENTS NEEDED COMMUNICASH
+for (let index = 0; index < questions.length; index++) {
+    var questionText =  questions[index].question;
+    var choicesText = questions[index].choices;
+    var correctAnswer = questions[index].answer;
+    drawQuestionText(questionText, choicesText, correctAnswer);
+}
+
+
+//This function should display the QUESTION as an h1 and display each CHOICE inside a button.
+
+function drawQuestionText (question, choices, correct) {
+    console.log(question);
+    console.log(choices);
+    console.log(correct);
+    //Loop through the choices array and add element back into HTML
+    //Turn question into HTML element as well (h1)
+
+    // questionText.textContent = questions
+}
+
+
+$(document).on('click', '.choice-btn', () => {
+    console.log('current qesiotn index!!!', currentQuestionIndex)
+    currentQuestionIndex++
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+})
+
+$(document).on('click', '.start-btn', () =>)
+
+
+
+// Countdown Timer WORKS!!! Still need to figure out how to link this and getting an answer wrong
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+// This is supposed to be the function that makes the timer start once I click the Start Game button
+window.body.startbutton.onclick = function () {
+    var oneMinute = 60 * 1,
+        display = document.querySelector('#time');
+    startTimer(oneMinute, display);
+};
+
+
+
+$(document).on('click', '.start-btn', () => {
+    startTimer();
+})
+
+
+
+
+
+// for (var choice in questions.choices) {
+//     console.log(choice);
+//     // if (questions.hasOwnProperty(key)) {
+//     //     console.log(choice);
+//     // }
+// } 
+
+
+
+// for (var index = 0; index < questions.length; index++) {
+
+//     var question = questions[index].question;
+//     var choices = questions[index].question;
+//     console.log(question);
+//     console.log(choices)
+    
+// }
+
+
+
+// var p = document.p;
+// //Create question elements to appear on the page
+// var questionEl = document.getElementById("question");
+// p.textContent = JSON.stringify(questions);
+
+// p.appendChild(questionEl);
+
+
+var deadline = new Time("00:00:00").getTime();
+
+
+
+
+// click event listener on start button
+startBtn.addEventListener("click", startQuiz);
+
+function startQuiz() {
+    // toggle classList.add/remove("hide")
+    intro.classList.add("hide");
+    quiz.classList.remove("hide");
+
+    // Timer starts
+    timeEl = setInterval(quizTime, 1000)
+}
 
 function quizTime() {
     var timeElapsed = parseInt(time.textContent);
@@ -20,100 +158,19 @@ function quizTime() {
 }
 
 
-function startGame() {
-    console.log('Started');
-    startButton.classList.add('hide');
-    shuffledQuestions = questions.sort(() => Math.random() - .5);
-    currentQuestionIndex = 0
-    questionContainerEl.classList.remove('hide');
-    timeEl = setInterval(quizTime, 1000)
-    setNextQuestion()
-}
-
-function setNextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex])
-}
-
-function showQuestion(currentQuestion) {
-    $('#answer-buttons').empty()
-    $('#question').empty()
-    questionEl.innerText = currentQuestion.question
-
-    //console.log('question choices ??', currentQuestion)
-
-    for (let i = 0; i < currentQuestion.choices.length; i++) {
-        //console.log('i??', i );
-        
-        //console.log('singldue due ???????',  currentQuestion.choices[i].text)
-        // 1 2 3 punch to put on page!!
-
-        //1 make a piece of html with jquery
-        var button = $('<button>')
-
-        //2 dress it up as u want it , class names text, id's, ect
-        button.text(currentQuestion.choices[i].text)
-        button.addClass('btn')    
-        button.addClass('choice-btn')     
-
-        //3 .append to page!! aka stick the button u just made on the page!
-        $('#answer-buttons').append(button)
-    }   
-}
 
 
-$(document).on('click', '.choice-btn', () => {
-    console.log('current qesiotn index!!!', currentQuestionIndex)
-    currentQuestionIndex++
-    showQuestion(shuffledQuestions[currentQuestionIndex])
-})
-
-
-
-function selectAnswer() {
-
-}
-
-const questions = [
-    {
-        question: "How many friends do I have",
-        choices: [
-            { text: 'so many', correct: true },
-            { text: 'too many', correct: false},
-            { text: '11', correct: false },
-            { text: 'only some', correct: false},
-        ],
-        answer: 0
-    },
-    {
-        question: "What does my hair look like?",
-        choices: [
-            { text: 'old', correct: false },
-            { text: 'french', correct: false},
-            { text: '11', correct: true },
-            { text: 'octupus', correct: false},
-        ],
-        answer: 2
-    },
-    {
-        question: "Where are my keys?",
-        choices: [
-            { text: '11', correct: false },
-            { text: 'the alley', correct: true},
-            { text: 'with allie', correct: false },
-            { text: 'squid', correct: false},
-        ],
-        answer: 1
-    },
-    {
-        question: "How many questions are there?",
-        choices: [
-            { text: '5', correct: false },
-            { text: '4', correct: true },
-            { text: '11', correct: false },
-            { text: 'eight', correct: false},
-        ],
-        answer: 1
-    },
- 
-]
-
+function begin(){
+    // console.log("it works") 
+    buttonContainer.setAttribute("class", "hide")
+    var timerLogic = 60;
+    var timerInterval = setInterval(function(){
+        timerLogic--
+        timer.textContent = timerLogic
+        //if the timer reaches 0 alert pops up that time is up
+        if(timerLogic <=0){
+            clearInterval(timerInterval)
+            alert("Time's Up!")
+        }
+    },1000)
+  }
