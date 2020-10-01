@@ -73,14 +73,23 @@ function quizTime() {
 let correctCount = document.querySelector('#counter-correct');
 let incorrectCount = document.querySelector('#counter-incorrect');
 
+//NOT WORKING - trying to create the function that will increase the correct and incorrect text areas
+// function changePoints() {
+//     for (let i = 0; i < questions.choices.length; i++) {
+//     if (questions.choices[i].correct === true){
+//         correctCount++;
+//     }
+//     else {
+//         incorrectCount++;
+//     }
+//     }      
+// }
 
-function changePoints() {
-    if (questions.choices.correct === true){
-        correctCount++;
-    }
-    else {
-        incorrectCount++;
-    }
+//ALSO NOT WORKING - trying to create the function that will increase the correct and incorrect text areas
+function changePoints(choices[i]) {
+   if(correct === true) {
+       correctCount++;
+   }
 }
 
 //This function is the main launching point for the game. The .hide class coming from CSS  will display block the start button and simutaneously remove the display block from the question container. Additionally, the setInterval function will begin decrementing the timeEl by 1 second. 
@@ -91,6 +100,7 @@ function startGame() {
     questionContainerEl.classList.remove('hide');
     timeEl = setInterval(quizTime, 1000);
     setNextQuestion();
+    changePoints();
 }
 
 //setNextQuestion is taking the values gathered from showQuestion and running through the empty values in a random order each time. This is because we created the variable shuffledQuestions in the main start function which uses Math.random to shuffle through the questions differently each time you take the quiz.
